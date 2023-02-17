@@ -32,7 +32,7 @@
                     </h6>
                 </div>
             </div>
-            <div class="footer-container sub-footer">
+            {{-- <div class="footer-container sub-footer">
                 <p class="gray">2022 All Rights Reserved</p>
                 <div>
                     <img src="~/Images/Icons/visa.png" alt="visa">
@@ -40,8 +40,8 @@
                     <img src="~/Images/Icons/paypal.png" alt="paypal">
                     <img src="~/Images/Icons/western.png" alt="western">
                 </div>
-            </div>
-            <div class="toast-container">
+            </div> --}}
+            {{-- <div class="toast-container">
                 <div class="toast-icon">
                     <i class="fas fa-paper-plane"></i>
                 </div>
@@ -49,6 +49,6 @@
                     <h3>Success</h3>
                     <p id="status"></p>
                 </div>
-            </div>
+            </div> --}}
         </div>
         </body>

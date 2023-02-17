@@ -4,31 +4,29 @@
 
 @include('includes.header')
 @include('includes.navbar')
+@include('includes.banner')
 
-<div class="wallpaper-container">
-    <img src="{{ asset('img/banner.jpg') }}" alt="wallpaper">
-    <div class="wallpaper-heading">
-        <h1>Shop</h1>
-        <h5>Home/Account</h5>
-    </div>
-</div>
-
-<div class="login-form">
-    <h2>Login</h2>
-    <label for="">Username</label>
-    <input type="text" name="username" id="">
-    <label for="">Password</label>
-    <input type="text" name="password" id="">
-    <div class="login-form-remember-me">
-        <div style="display:flex;flex-direction:column;justify-content:flex-start;">
-            {{-- <button class="admin-login-btn" id="admin-login">Try with a guest account</button> --}}
-            <input style="margin-top:0.5rem;width:15rem;" type="submit" value="Log In" class="btn btn-default" />
+<div class="center-section">
+    <form class="login-form" method="POST" action="{{ route('submit_login') }}">
+        {{ csrf_field() }}
+        <h2>Login</h2>
+        <label for="username">Username</label>
+        <input type="text" name="username">
+        <label for="password">Password</label>
+        <input type="password" name="password">
+        <div class="login-form-remember-me">
+            <div style="display:flex;flex-direction:column;justify-content:flex-start;">
+                {{-- <button class="admin-login-btn" id="admin-login">Try with a guest account</button> --}}
+                <input style="margin-top:0.5rem;width:15rem;" type="submit" value="Log In" class="btn btn-default" />
+            </div>
         </div>
-    </div>
-    <a href="#">Don't have an Account?</a>
-    <div>
-    </div>
-
+        <a href="{{ route('register') }}">Don't have an Account?</a>
+        <div>
+        </div>
+        @if (session()->has('error'))
+            <p class="list-error">{{ session('error') }}</p>
+        @endif
+    </form>
 </div>
 @include('includes.footer')
 
