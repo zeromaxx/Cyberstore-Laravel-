@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,9 @@ Route::get('/', function () {
 });
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::get('home', [AppController::class, 'home'])->name('home');
+Route::get('admin', [AdminController::class, 'home'])->name('admin');
+Route::get('insert_product', [AdminController::class, 'insert_product'])->name('insert_product');
+Route::post('submit_product', [AdminController::class, 'submit_product'])->name('submit_product');
 Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('submit_register', [AuthController::class, 'submit_register'])->name('submit_register');

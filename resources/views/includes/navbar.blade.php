@@ -8,6 +8,7 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Register</a></li>
+                    <li><a href="{{ route('admin') }}">Admin</a></li>
                     <li><a href="">Shop</a></li>
                     <li><a href="">Build your desktop</a></li>
                     <li><a href="">Suggestions</a></li>
