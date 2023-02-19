@@ -852,7 +852,8 @@ section {
 .insert-product-form label {
     color: var(--admin-primary-clr-3);
 }
-.insert-product-form input {
+.insert-product-form input,
+.insert-product-form select {
     background-color: var(--admin-primary-clr-7);
     outline: none;
     border-radius: 5px;

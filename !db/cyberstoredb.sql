@@ -42,3 +42,17 @@ CREATE TABLE `products`  (
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) 
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Monitors', NULL, NULL, NULL),
+(2, 'Graphics Cards', NULL, NULL, NULL),
+(3, 'Cpu', NULL, NULL, NULL),
+(4, 'Montherboards', NULL, NULL, NULL);

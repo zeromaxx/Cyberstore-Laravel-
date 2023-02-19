@@ -41,10 +41,10 @@
 
 .container {
     max-width: 1400px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    margin-bottom: 3rem;
     height: 420px;
     width: 100%;
-    margin: 0 auto;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -130,6 +130,7 @@ body {
 }
 
 .hot-releases-img-container {
+    text-align: center;
     position: relative;
 }
 
