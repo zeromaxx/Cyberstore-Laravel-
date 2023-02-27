@@ -886,3 +886,12 @@ section {
     cursor: pointer;
     outline: none;
 }
+.toast {
+    background-color: var(--admin-primary-clr-14);
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 5px;
+}

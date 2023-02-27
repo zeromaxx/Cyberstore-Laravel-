@@ -43,10 +43,11 @@ class AuthController extends Controller
             'username' => $username,
             'password' => Hash::make($password),
             'email' => $email,
+            'role' => 'user',
         ]);
 
         if (!empty($user)) {
-            $request->session()->flash('success', 'Ο λογαριασμός δημιουργήθηκε με επιτυχία !');
+            $request->session()->flash('success', 'Your account has been created!');
             return redirect()->route('register');
         }
         return redirect()->route('register');

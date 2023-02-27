@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
+    use SoftDeletes;
     protected $table = 'products';
 
     public $timestamps = true;
@@ -24,4 +26,10 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\Category', 'category_id');
     }
+
+    public function favouritedBy()
+    {
+        return $this->belongsToMany(User::class, 'favourites');
+    }
+
 }

@@ -1,5 +1,5 @@
 const adminSidebar = document.querySelector(".admin-sidebar");
-const test = document.querySelector(".test");
+const toast = document.querySelector(".toast");
 const adminSideBarBtn = document.querySelector(".admin-sidebar-toggle");
 const arrowDown = document.querySelectorAll(".arrow-down");
 const dropdown = document.querySelectorAll(".dropdown");
@@ -109,4 +109,12 @@ darkLightBtn.addEventListener("click", () => {
 });
 if (localStorage.getItem("theme") === "dark-theme") {
     body.classList.add("dark-theme");
+}
+
+if (toast !== null) {
+    setTimeout(() => {
+        toast.style.display = "none";
+    }, 3000);
+} else {
+    // console.log(false);
 }

@@ -14,7 +14,7 @@
         <label for="quantity">Quantity</label>
         <input type="text" name="quantity">
         <label for="image">Image</label>
-        <input type="file" name="image">
+        <input required type="file" name="image">
         <label for="category">Category</label>
         <select name="category">
             @foreach ($categories as $category)
@@ -23,10 +23,10 @@
         </select>
         <button type="submit" class="btn btn-default">Create</button>
         @if (session()->has('success'))
-            <p>{{ session('success') }}</p>
+            <div class="toast">{{ session('success') }}</div>
         @endif
-    </form>
 
+    </form>
 </section>
 
 @include('includes.admin_footer')

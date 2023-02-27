@@ -59,11 +59,21 @@ class AdminController extends Controller
 
             $product = Product::find($id);
             $categories = Category::all();
-            
+
             return view('admin.edit_product', [
                 'product' => $product,
                 'categories' => $categories
             ]);
+        } else {
+            return redirect('/')->with('id_not_found', 'product does not exist.');
+        }
+    }
+
+    public function delete_product($id)
+    {
+        if (Product::where('id', $id)->exists()) {
+            Product::where('id', $id)->delete();
+            return redirect()->back()->with('success', 'Product delete successfully.');
         } else {
             return redirect('/')->with('id_not_found', 'product does not exist.');
         }
@@ -87,5 +97,36 @@ class AdminController extends Controller
         $product->save();
 
         return redirect()->to('allproducts')->with('success', 'Product updated successfully.');
+    }
+
+    public function getproductdata()
+
+    {
+        $productsUnder200 = Product::where('price', '<', 200)->count();
+        $productsBetween200And600 = Product::where('price', '>', 200)->where('price', '<', 600)->count();
+        $productsover600 = Product::where('price', '>', 600)->count();
+        return response()->json([
+            '_productsUnder200' => $productsUnder200,
+            '_productsBetween200And600' => $productsBetween200And600,
+            '_productsover600' => $productsover600,
+        ]);
+    }
+
+    public function getproductsalerate()
+    {
+        $top5ProductNames  = Product::groupBy('products.id')
+            ->orderByRaw('SUM(sales) DESC')
+            ->take(8)
+            ->pluck('name');
+
+        $top5ProductSales = Product::groupBy('products.id')
+            ->orderByRaw('SUM(sales) DESC')
+            ->take(8)
+            ->pluck('sales');
+
+        return response()->json([
+            'Products' => $top5ProductNames,
+            'Top5ProductSales' => $top5ProductSales,
+        ]);
     }
 }

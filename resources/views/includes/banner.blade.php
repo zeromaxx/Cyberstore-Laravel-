@@ -3,7 +3,7 @@
     <div class="wallpaper-heading">
         <h2>Shop</h2>
         <p>Home/@if (request()->route())
-                {{ ucfirst(request()->route()->getName()) }}
+                {{ str_ireplace('_',' ',ucfirst(request()->route()->getName())) }}
             @endif
         </p>
     </div>
