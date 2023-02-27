@@ -13,3 +13,23 @@
 <h3>Register</h3>
 
 ![My Image](!screenshots/register.png)
+
+<h3>Cart</h3>
+
+![My Image](!screenshots/cart.png)
+    
+<h3>Checkout</h3>
+
+![My Image](!screenshots/checkout.png)
+    
+<h3>Wishlist</h3>
+
+![My Image](!screenshots/wishlist.png)
+    
+<h3>Orders</h3>
+
+![My Image](!screenshots/orders.png)
+
+<h3>Admin</h3>
+
+![My Image](!screenshots/admin.png)
