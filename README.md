@@ -6,6 +6,10 @@
     Html | Css | Javascript | Laravel | Jquery | Sql
 
     
-    <h3>Homepage</h3>
+<h3>Homepage</h3>
 
 ![My Image](!screenshots/home.png)
+
+<h3>Register</h3>
+
+![My Image](!screenshots/register.png)
