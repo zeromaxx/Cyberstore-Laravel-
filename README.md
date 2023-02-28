@@ -12,10 +12,6 @@
   <br/>
   - Search for products and sort them by category/price
   <br/>
-  - Contact page
-  <br/>
-  - Subscribe to a newsletter
-  <br/>
   <br/>
 <p><b>Admin</b> has his own dashboard, where he can analyze the performance of the website with the help of charts, insert/edit new products and view all the products of the website.</p>
 
