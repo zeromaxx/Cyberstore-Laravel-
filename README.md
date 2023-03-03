@@ -19,36 +19,36 @@
     Html | Css | Javascript | Laravel | Jquery | Sql
 
     
-<h3>Homepage</h3>
+<h4>Homepage</h4>
 
 ![My Image](!screenshots/home.png)
 
  <br/>
 
-<h3>Cart</h3>
+<h4>Cart</h4>
 
 ![My Image](!screenshots/cart.png)
 
  <br/>
     
-<h3>Checkout</h3>
+<h4>Checkout</h4>
 
 ![My Image](!screenshots/checkout.png)
 
  <br/>
     
-<h3>Wishlist</h3>
+<h4>Wishlist</h4>
 
 ![My Image](!screenshots/wishlist.png)
 
  <br/>
     
-<h3>Orders</h3>
+<h4>Orders</h4>
 
 ![My Image](!screenshots/orders.png)
 
  <br/>
 
-<h3>Admin</h3>
+<h4>Admin</h4>
 
 ![My Image](!screenshots/admin.png)
