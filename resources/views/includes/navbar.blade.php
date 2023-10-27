@@ -5,6 +5,7 @@
         <div class="navbar-container">
             <div class="links-container">
                 <ul>
+                        <li><a href="{{ route('home') }}">Home</a></li>
                     @if (Auth::check() && Auth::user()->role == 'user')
                         <li><a href="{{ route('wishlist') }}">Wishlist</a></li>
                         <li><a href="{{ route('orders') }}">Orders</a></li>
@@ -23,6 +24,11 @@
             </div>
             <div>
                 <ul class="navbar-sub">
+                    @if (Auth::check())
+                    <li>
+                        <span class="" style="font-size:12px;color:white;cursor:initial">Welcome, {{ Auth::user()->username }}</span>
+                    </li>
+                    @endif
                     @if (Auth::check())
                         <li>
                             <a style="font-size:12px" class="nav-link" href="{{ route('logout') }}">Logout</a>

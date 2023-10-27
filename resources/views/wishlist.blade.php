@@ -1,5 +1,5 @@
 @section('title')
-    {{ 'Home' }}
+{{ 'Home' }}
 @endsection
 
 @include('includes.header')
@@ -10,35 +10,41 @@
 <div class="wishlist-container">
     <table>
         @foreach ($favourites as $favourite)
-            <tr>
-                <td>
-                    <i class="fas fa-times remove-wishlist-button" data-product-id=""></i>
-                </td>
-                <td>
-                    <img src="/images/{{ $favourite['product']['image'] }}" alt="">
-                </td>
-                <td>
-                    <h5>{{ $favourite['product']['name'] }}</h5>
-                </td>
-                <td>
-                    <h4>{{ $favourite['product']['price'] }} &euro;</h4>
-                </td>
-                <td>
-                    <span>{{ $favourite['product']['qty'] }} In Stock</span>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @if (auth()->check())
+                <form class="favForm" action="{{ route('remove_favourite', $favourite->product) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="favBtnSubmit" style="display: none">
+                    </button>
+                    <i class="fas fa-times remove-wishlist-button" onclick="submitFavForm();"></i>
+                </form>
+                @endif
+            </td>
+            <td>
+                <img src="/images/{{ $favourite['product']['image'] }}" alt="">
+            </td>
+            <td>
+                <h5>{{ $favourite['product']['name'] }}</h5>
+            </td>
+            <td>
+                <h4>{{ $favourite['product']['price'] }} &euro;</h4>
+            </td>
+            <td>
+                <span>{{ $favourite['product']['qty'] }} In Stock</span>
+            </td>
+        </tr>
         @endforeach
         <tr>
             <td style="text-align:center;">
                 {{ $message }}
             </td>
-        </tr>   
+        </tr>
     </table>
 </div>
 <div class="empty-space"></div>
-
-
-{{-- <script src="~/Scripts/Navbar Toggle.js"></script>
-    <script src="~/Scripts/LiveSearch.js"></script>
-    <script src="~/Scripts/WishList.js"></script>
-    <script src="~/Scripts/AddToCart.js"></script> --}}
+<script>
+    function submitFavForm() {
+    document.querySelector('.favForm').submit();
+}
+</script>

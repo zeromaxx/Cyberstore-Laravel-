@@ -64,30 +64,54 @@ class AppController extends Controller
 
     public function wishlist()
     {
-        $user_id = auth()->user()->id;
-        $favourites = Favourite::with('product')->where('user_id', $user_id)->get();
+        $favourites = collect();
+        $message = '';
 
-        if (count($favourites) == 0) {
-            $message = 'No products added to the wishlist';
+        if (auth()->check()) {
+            $user_id = auth()->user()->id;
+
+            try {
+                $favourites = Favourite::with('product')->where('user_id', $user_id)->get();
+
+                if ($favourites->isEmpty()) {
+                    $message = 'No products added to the wishlist';
+                }
+            } catch (\Exception $e) {
+                $message = 'An error occurred while fetching your wishlist.';
+            }
+        } else {
+            $message = 'Log in to view your wishlist';
         }
+
         return view('wishlist', [
             'favourites' => $favourites,
-            'message' => $message ?? "",
+            'message' => $message,
         ]);
     }
 
+
     public function cart()
     {
-        $user_id = auth()->user()->id;
+        $cart = collect();
+        $total = 0;
 
-        $cart = Cart::with('product')->where('user_id', $user_id)->get();
+        if (auth()->check()) {
+            $user_id = auth()->user()->id;
 
-        $total = $cart->sum(function ($item) {
-            return $item->price * $item->quantity;
-        });
+            try {
+                $cart = Cart::with('product')->where('user_id', $user_id)->get();
+
+                $total = $cart->sum(function ($item) {
+                    return $item->product->price * $item->quantity;
+                });
+            } catch (\Exception $e) {
+                return redirect()->back()->with('error', 'An error occurred while fetching your cart.');
+            }
+        }
 
         return view('cart', ['cart' => $cart, 'total' => $total]);
     }
+
 
     public function removeCartItem($id)
     {
@@ -104,6 +128,12 @@ class AppController extends Controller
         }
         auth()->user()->addFavourite($product, $user_id);
         return response()->json(['message' => 'Added to favourites!']);
+    }
+
+    public function remove_favourite(Product $product)
+    {
+        auth()->user()->removeFavourite($product);
+        return back()->with('message', 'Removed from favourites');
     }
 
     public function add_to_cart(Product $product)
@@ -176,7 +206,6 @@ class AppController extends Controller
 
         $cart = Cart::with('product')->where('user_id', $user_id)->get()->toArray();
 
-        // dd($cart);
         foreach ($cart as $cartItem) {
             $product = Product::where('id', $cartItem['product_id'])->first();
             OrderItem::create([
