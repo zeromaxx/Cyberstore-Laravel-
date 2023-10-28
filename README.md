@@ -2,17 +2,17 @@
 
 For Customers:
 
-    Mark products as favorites
-    Easily add items to the shopping cart
-    Seamless payment process
-    Access to detailed order history post-payment
-    Efficient product search with categorization and price filtering capabilities
+    - Mark products as favorites
+    - Easily add items to the shopping cart
+    - Seamless payment process
+    - Access to detailed order history post-payment
+    - Efficient product search with categorization and price filtering capabilities
 
 For Administrators:
 
-    A dedicated dashboard providing insightful performance analytics via charts
-    Facilitates product management, allowing for easy addition or modification
-    Comprehensive view of all listed products on the platform.
+    - A dedicated dashboard providing insightful performance analytics via charts
+    - Facilitates product management, allowing for easy addition or modification
+    - Comprehensive view of all listed products on the platform.
 
 <b>Technologies:<b/>
     Html | Css | Javascript | Laravel | Jquery | Sql
