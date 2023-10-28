@@ -1,19 +1,18 @@
-<b>Cyberstore</b> is an e-commerce website that allows users to buy computer hardware parts.
+<b>Cyberstore</b>  is a Laravel-based e-commerce platform specializing in computer hardware components. Boasting a robust login/registration mechanism, it distinctly categorizes users as administrators or customers:
 
-<p>It provides a fully functional login/register system and implements the roles of admin and customer. 
-  Once a customer is logged in, they have the following options at their disposal: </p>
-  - Favourite Products
-  <br/>
-  - Add Products to Cart
-  <br/>
-  - Pay for a Product
-  <br/>
-  - View previous order details ( once payment is done)
-  <br/>
-  - Search for products and sort them by category/price
-  <br/>
-  <br/>
-<p><b>Admin</b> has his own dashboard, where he can analyze the performance of the website with the help of charts, insert/edit new products and view all the products of the website.</p>
+For Customers:
+
+    Mark products as favorites
+    Easily add items to the shopping cart
+    Seamless payment process
+    Access to detailed order history post-payment
+    Efficient product search with categorization and price filtering capabilities
+
+For Administrators:
+
+    A dedicated dashboard providing insightful performance analytics via charts
+    Facilitates product management, allowing for easy addition or modification
+    Comprehensive view of all listed products on the platform.
 
 <b>Technologies:<b/>
     Html | Css | Javascript | Laravel | Jquery | Sql
