@@ -62,7 +62,7 @@
                 Total
                 <span>{{ $total }} &euro;</span>
             </h3>
-            <a href="{{ route('checkout') }}">Proceed To Checkout</a>
+            <a @if(!Auth::check()) data-tooltip="Login to continue" @endif href="{{ Auth::check() ? route('checkout') : '#' }}">Proceed To Checkout</a>
         </div>
     </div>
 </div>

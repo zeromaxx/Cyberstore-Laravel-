@@ -12,9 +12,6 @@
         <h3>Orders Listing</h3>
         <p>Home - Orders</p>
     </div>
-    <div class="order-listing-header">
-        <input type="text" name="" placeholder="Search Order">
-    </div>
     <div class="order-listing-table">
         <table>
             <thead>
@@ -24,7 +21,7 @@
                     <th>Lastname</th>
                     <th>Total</th>
                     <th>Date Added</th>
-                    <th>Actions</th>
+                    <th></th>
                 </tr>
             </thead>
             @foreach ($orders as $order)

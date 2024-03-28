@@ -112,6 +112,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    position: relative;
 }
 
 .product-container-img {
@@ -166,6 +167,7 @@ body {
     display: flex;
     justify-content: center;
     justify-content: space-between;
+    z-index: 3;
 }
 
 .product-category h6 {
@@ -1292,6 +1294,7 @@ td .fa-times:hover {
     font-weight: 500;
     margin-top: 1.5rem;
     padding: 18px 31px;
+    position: relative;
 }
 
 .cart-checkout a:hover {
@@ -1359,6 +1362,7 @@ td .fa-times:hover {
     align-items: center;
     justify-content: space-between;
     color: black;
+    z-index: 3;
 }
 
 .cart-div {
@@ -4242,4 +4246,34 @@ REGISTER*/
     border-radius: 5px;
     display: none;
     z-index: 100;
+}
+.full-box-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+a[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, calc(-100% - 5px));
+
+    background-color: #000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.2s linear;
+}
+
+a[data-tooltip]:hover::after {
+    visibility: visible;
+    opacity: 1;
 }

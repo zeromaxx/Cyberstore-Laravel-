@@ -38,7 +38,7 @@
                         <form class="favForm" action="{{ route('add_favourite', $product) }}" method="POST">
                             @csrf
                             <i
-                                class="fa-regular fa-heart favourite-button 
+                                class="fa-regular fa-heart favourite-button
                                 {{ auth()->user()->hasFavourited($product)? 'blue-heart': 'grey-heart' }}">
                             </i>
 
@@ -114,7 +114,7 @@
                                 @endif
                             @endif
                         @else
-                            <p style="color: #5677fc">Login to continue</p>
+                            <p style="color: #5677fc">Login to add to cart</p>
                         @endif
                     </div>
                 </div>
