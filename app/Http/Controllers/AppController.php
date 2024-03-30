@@ -9,7 +9,8 @@ use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\OrderItem;
-
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Mail\Message;
 class AppController extends Controller
 {
 
@@ -244,4 +245,25 @@ class AppController extends Controller
 
         return view('details', ['product' => $product]);
     }
+
+    // Import the TextPart class
+
+    public function send_newsletter(Request $request)
+    {
+        $recipient = $request->receiver;
+        try {
+            Mail::send([], [], function (Message $message) use ($recipient) {
+                $message->to($recipient)
+                        ->subject('Newsletter - Cyberstore')
+                        ->text('Thank you for subscribing to our newsletter!');
+                // ->from('sender@example.com') to set the sender email, if needed.
+            });
+
+            return redirect()->back()->with('success', 'Thank you for subscribing to our newsletter!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Something went wrong. Please try again later.');
+        }
+    }
+
+
 }

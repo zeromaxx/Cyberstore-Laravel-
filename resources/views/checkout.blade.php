@@ -1,5 +1,5 @@
 @section('title')
-    {{ 'Checkout' }}
+{{ 'Checkout' }}
 @endsection
 
 @include('includes.header')
@@ -9,19 +9,16 @@
 
 
 @if (session()->has('success'))
-    <div class="order-complete-modal">
-        <svg width="70" height="70" id="Layer_1" style="enable-background:new 0 0 30 30;" version="1.1"
-            viewBox="0 0 30 30" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink">
-            <path fill="#5677fc"
-                d="M15,3C8.373,3,3,8.373,3,15c0,6.627,5.373,12,12,12s12-5.373,12-12C27,8.373,21.627,3,15,3z M21.707,12.707l-7.56,7.56  c-0.188,0.188-0.442,0.293-0.707,0.293s-0.52-0.105-0.707-0.293l-3.453-3.453c-0.391-0.391-0.391-1.023,0-1.414s1.023-0.391,1.414,0  l2.746,2.746l6.853-6.853c0.391-0.391,1.023-0.391,1.414,0S22.098,12.316,21.707,12.707z" />
-        </svg>
-        <p class="order-data">{{ session('success') }}</p>
-        <div>
-            <a class="order-complete-modal-link" href="{{ route('orders') }}">View Orders</a>
-            <button class="close-order-complete-modal">Not now</button>
-        </div>
+<div class="order-complete-modal">
+    <svg width="70" height="70" id="Layer_1" style="enable-background:new 0 0 30 30;" version="1.1" viewBox="0 0 30 30" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <path fill="#5677fc" d="M15,3C8.373,3,3,8.373,3,15c0,6.627,5.373,12,12,12s12-5.373,12-12C27,8.373,21.627,3,15,3z M21.707,12.707l-7.56,7.56  c-0.188,0.188-0.442,0.293-0.707,0.293s-0.52-0.105-0.707-0.293l-3.453-3.453c-0.391-0.391-0.391-1.023,0-1.414s1.023-0.391,1.414,0  l2.746,2.746l6.853-6.853c0.391-0.391,1.023-0.391,1.414,0S22.098,12.316,21.707,12.707z" />
+    </svg>
+    <p class="order-data">{{ session('success') }}</p>
+    <div>
+        <a class="order-complete-modal-link" href="{{ route('orders') }}">View Orders</a>
+        <button class="close-order-complete-modal">Not now</button>
     </div>
+</div>
 @endif
 
 <form action="{{ route('submit_order') }}" method="POST" id="checkout-form">
@@ -34,22 +31,22 @@
                     <label for="firstname">Firstname *</label>
                     <input type="text" class="form-control" name="firstname">
                     @error('firstname')
-                        <span style="color: red">{{ $message }}</span>
+                    <span style="color: red">{{ $message }}</span>
                     @enderror
                     <label for="lastName">LastName *</label>
                     <input type="text" class="form-control" name="lastname">
                     @error('lastname')
-                        <span style="color: red">{{ $message }}</span>
+                    <span style="color: red">{{ $message }}</span>
                     @enderror
                     <label for="address">Address *</label>
                     <input type="text" class="form-control" name="address">
                     @error('address')
-                        <span style="color: red">{{ $message }}</span>
+                    <span style="color: red">{{ $message }}</span>
                     @enderror
                     <label for="telephone">Telephone *</label>
                     <input type="text" class="form-control" name="telephone">
                     @error('telephone')
-                        <span style="color: red">{{ $message }}</span>
+                    <span style="color: red">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="col-3-checkout">
@@ -60,11 +57,16 @@
                     </select>
                 </div>
             </div>
-
+            @if (isset($cart) && count($cart) > 0)
             <div class="col-4-checkout">
                 <button class="checkout-button" id="place-order" type="submit"><span id="paypal-btn"></span></button>
                 <input id="place-order" type="submit" value="Place Order">
             </div>
+            @else
+            <div class="col-4-checkout">
+                <h6 class="text-danger">Select an item to add to your cart before proceeding with your order.</h6>
+            </div>
+            @endif
 
         </div>
         <div class="order-checkout-container">
@@ -74,21 +76,21 @@
                     <th class="text-left">Product</th>
                     <th>Name</th>
                     <th>Qty</th>
-                    <th>Unit Price</th>
+                    <th></th>
                     <th>Total</th>
                 </tr>
                 @foreach ($cart as $cartItem)
-                    <tr>
-                        <td data-label="Product" class="text-left">
-                            <img width="50" src="/images/{{ $cartItem['product']['image'] }}" alt="product-image">
-                        </td>
-                        <td data-label="Name" class="">{{ $cartItem['product']['name'] }}</td>
-                        <td data-label="Qty" class="order-checkout-qty">{{ $cartItem['quantity'] }}</td>
-                        <td class=""></td>
-                        <td data-label="Total" class="order-checkout-total">
-                            <span class="span-color-1"> {{ $cartItem['product']['price'] }} &euro;</span>
-                        </td>
-                    </tr>
+                <tr>
+                    <td data-label="Product" class="text-left">
+                        <img width="50" src="/images/{{ $cartItem['product']['image'] }}" alt="product-image">
+                    </td>
+                    <td data-label="Name" class="">{{ $cartItem['product']['name'] }}</td>
+                    <td data-label="Qty" class="order-checkout-qty">{{ $cartItem['quantity'] }}</td>
+                    <td class=""></td>
+                    <td data-label="Total" class="order-checkout-total">
+                        <span class="span-color-1"> {{ $cartItem['product']['price'] }} &euro;</span>
+                    </td>
+                </tr>
                 @endforeach
                 <tr>
                     <td></td>
@@ -145,4 +147,5 @@
         })
 
     })
+
 </script>
